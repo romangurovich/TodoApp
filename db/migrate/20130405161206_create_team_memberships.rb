@@ -8,6 +8,6 @@ class CreateTeamMemberships < ActiveRecord::Migration
     end
 
     add_index :team_memberships, :user_id
-    add_index :team_memberships. :team_id
+    add_index :team_memberships, :team_id
   end
 end
