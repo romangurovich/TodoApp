@@ -1,4 +1,60 @@
 TodoApp::Application.routes.draw do
+  get "items/index"
+
+  get "items/show"
+
+  get "items/edit"
+
+  get "items/update"
+
+  get "items/new"
+
+  get "items/create"
+
+  get "items/destroy"
+
+  get "projects/index"
+
+  get "projects/show"
+
+  get "projects/edit"
+
+  get "projects/update"
+
+  get "projects/new"
+
+  get "projects/create"
+
+  get "projects/destroy"
+
+  get "teams/index"
+
+  get "teams/show"
+
+  get "teams/edit"
+
+  get "teams/update"
+
+  get "teams/new"
+
+  get "teams/create"
+
+  get "teams/destroy"
+
+  get "users/index"
+
+  get "users/show"
+
+  get "users/edit"
+
+  get "users/update"
+
+  get "users/new"
+
+  get "users/create"
+
+  get "users/destroy"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
