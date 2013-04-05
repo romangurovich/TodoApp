@@ -1,2 +1,4 @@
-<h1>Teams#new</h1>
-<p>Find me in app/views/teams/new.html.erb</p>
+<%= content_for(:title, "New Team") %>
+
+<h1><%= "Make a New Team" %></h1>
+<%= render partial: 'form', object: @team, locals: { type: :new } %>

@@ -1,0 +1,12 @@
+<%= form_for(team) do |f| %>
+
+  <%= f.label :name, "Team Name" %>
+  <%= f.text_field :name %>
+
+  <%# if :type == :edit %>
+
+  <%= check_box_field @team, User, :username %>
+
+  <%= f.submit :type == :edit ? "Edit that team, baby" : "Make this team" %>
+
+<% end %>
