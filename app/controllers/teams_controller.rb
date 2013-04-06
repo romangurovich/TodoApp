@@ -13,8 +13,14 @@ class TeamsController < ApplicationController
 
   def update
     @team = Team.find(params[:id])
-    @team.update_attributes(params[:team])
-    redirect_to team_path(@team)
+    @team.assign_attributes(params[:team])
+
+    if @team.save
+      redirect_to team_path(@team)
+    else
+      flash.notice = @team.errors.full_messages
+      render :edit
+    end
   end
 
   def new
@@ -24,15 +30,18 @@ class TeamsController < ApplicationController
   def create
     @team = Team.new
     @team.name = params[:team][:name]
+
     if @team.save
       redirect_to team_path(@team)
     else
-      flash.now.notice = @team.errors.full_messages
+      flash.notice = @team.errors.full_messages
       render :new
     end
   end
 
   def destroy
     Team.find(params[:id]).destroy
+    flash.notice = "Team deleted"
+    redirect_to teams_path
   end
 end

@@ -13,8 +13,14 @@ class ProjectsController < ApplicationController
 
   def update
     @project = Project.find(params[:id])
-    @project.update_attributes(params[:project])
-    redirect_to project_path(@project)
+    @project.assign_attributes(params[:project])
+
+    if @project.save
+      redirect_to project_path(@project)
+    else
+      flash.now.notice = @project.errors.full_messages
+      render :edit
+    end
   end
 
   def new
@@ -26,16 +32,19 @@ class ProjectsController < ApplicationController
     @project.name = params[:project][:name]
     @project.description = params[:project][:description]
     @project.team_id = params[:project][:team_id]
+
     if @project.save
       redirect_to project_path(@project)
     else
-      flash.now.notice = @project.errors.full_messages
+      flash.notice = @project.errors.full_messages
       render :new
     end
   end
 
   def destroy
     Project.find(params[:id]).destroy
+    flash.notice = "Project deleted"
+    redirect_to projects_path
   end
 
 end

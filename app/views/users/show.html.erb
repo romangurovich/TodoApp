@@ -1,2 +1,24 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<%= content_for(:title, "User") %>
+
+<h1><%= @user.username %></h1>
+
+<h3>Teams <%= @user.username %> belongs to</h3>
+<ul>
+  <% @user.teams.each do |team| %>
+    <li>
+      <%= link_to team.name, team_path(team) %>
+    </li>
+  <% end %>
+</ul>
+
+<h3>Projects</h3>
+<ul>
+  <% @user.projects.each do |project| %>
+    <li>
+      <%= link_to project.name, project_path(project) %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to "Edit ", edit_user_path(@user) %>
+<%= back_to User %>

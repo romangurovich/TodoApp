@@ -13,8 +13,14 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    @user.update_attributes(params[:user])
-    redirect_to user_path(@user)
+    @user.assign_attributes(params[:user])
+
+    if @user.save
+      redirect_to user_path(@user)
+    else
+      flash.now.notice = @user.errors.full_messages
+      render :edit
+    end
   end
 
   def new
@@ -24,6 +30,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new
     @user.usernname = params[:user][:username]
+
     if @user.save
       redirect_to user_path(@user)
     else
@@ -34,6 +41,8 @@ class UsersController < ApplicationController
 
   def destroy
     User.find(params[:id]).destroy
+    flash.notice << "User deleted"
+    redirect_to users_path
   end
 
 end

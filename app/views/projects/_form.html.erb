@@ -1,0 +1,15 @@
+<%= form_for(project) do |f| %>
+
+  <%= f.label :name, "Project Name" %>
+  <%= f.text_field :name %>
+
+  <%# if :type == :edit %>
+
+  <%= check_box_field @project, Item, :title %>
+
+  <%= f.submit project.persisted? ? "Edit that project, friend" : "Make this project" %>
+
+<% end %>
+
+
+<%= undo @project %>

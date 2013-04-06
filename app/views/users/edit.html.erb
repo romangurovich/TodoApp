@@ -1,2 +1,4 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<%= content_for(:title, "Edit User") %>
+
+<h1><%= "Edit User '#{@user.username}'" %></h1>
+<%= render partial: 'form', object: @user, locals: { user: @user } %>

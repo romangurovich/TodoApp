@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessible :username
+  attr_accessible :username, :team_ids, :project_ids
   validates :username, presence: true, length: { minimum: 2 }
 
   has_many :team_memberships
