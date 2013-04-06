@@ -18,7 +18,7 @@ class UsersController < ApplicationController
     if @user.save
       redirect_to user_path(@user)
     else
-      flash.now.notice = @user.errors.full_messages
+      flash.now.notice << @user.errors.full_messages
       render :edit
     end
   end
@@ -28,13 +28,12 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new
-    @user.usernname = params[:user][:username]
+    @user = User.new(params[:user])
 
     if @user.save
       redirect_to user_path(@user)
     else
-      flash.now.notice = @user.errors.full_messages
+      flash.now.notice << @user.errors.full_messages
       render :new
     end
   end

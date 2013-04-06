@@ -18,7 +18,7 @@ class ProjectsController < ApplicationController
     if @project.save
       redirect_to project_path(@project)
     else
-      flash.now.notice = @project.errors.full_messages
+      flash.now.notice << @project.errors.full_messages
       render :edit
     end
   end
@@ -28,22 +28,19 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    @project = Project.new
-    @project.name = params[:project][:name]
-    @project.description = params[:project][:description]
-    @project.team_id = params[:project][:team_id]
+    @project = Project.new(params[:project])
 
     if @project.save
       redirect_to project_path(@project)
     else
-      flash.notice = @project.errors.full_messages
+      flash.notice << @project.errors.full_messages
       render :new
     end
   end
 
   def destroy
     Project.find(params[:id]).destroy
-    flash.notice = "Project deleted"
+    flash.notice << "Project deleted"
     redirect_to projects_path
   end
 

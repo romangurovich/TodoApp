@@ -18,7 +18,7 @@ class ItemsController < ApplicationController
     if @item.save
       redirect_to item_path(@item)
     else
-      flash.notice = @item.errors.full_messages
+      flash.notice << @item.errors.full_messages
       render :edit
     end
   end
@@ -28,23 +28,19 @@ class ItemsController < ApplicationController
   end
 
   def create
-    @item = Item.new
-    @item.title = params[:item][:title]
-    @item.description = params[:item][:description]
-    @item.completed = params[:item][:completed]
-    @item.project_id = params[:item][:project_id]
+    @item = Item.new(params[:item])
 
     if @item.save
       redirect_to item_path(@item)
     else
-      flash.notice = @item.errors.full_messages
+      flash.notice << @item.errors.full_messages
       render :new
     end
   end
 
   def destroy
     Item.find(params[:id]).destroy
-    flash.notice = "Item deleted"
+    flash.notice << "Item deleted"
     redirect_to items_path
   end
 
