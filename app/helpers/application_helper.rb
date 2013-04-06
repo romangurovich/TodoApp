@@ -35,6 +35,15 @@ module ApplicationHelper
     link_to "Back to #{where}", path
   end
 
+  def make_new(klass)
+    controller_name = klass.name.pluralize.underscore
+    path = url_for controller: controller_name, action: 'new'
+    where = controller_name.gsub(/_/, " ").capitalize.singularize
+
+    link_to "Make a New #{where}", path
+  end
+
+
   def undo(object)
     controller_name = object.class.name.pluralize.underscore
     path = url_for controller: controller_name, action: 'index'

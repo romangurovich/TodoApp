@@ -4,13 +4,13 @@
     <%= f.label :username, "User Name" %>
     <%= f.text_field :username %>
   </p>
-    <%# if :type == :edit %>
+
   <p>
     Teams
-    <%= check_box_field @user, Team, :name %>
+    <%= check_box_field user, Team, :name %>
   </p>
     Projects
-    <%= check_box_field @user, Project, :name %>
+    <%= check_box_field user, Project, :name %>
   </p>
     <%= f.submit user.persisted? ?
             "Edit that user, darling" : "Make a new user" %>
@@ -18,4 +18,4 @@
 
 <% end %>
 
-<% undo @user %>
+<% undo user %>

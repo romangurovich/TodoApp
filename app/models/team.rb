@@ -1,5 +1,5 @@
 class Team < ActiveRecord::Base
-  attr_accessible :name,:user_ids
+  attr_accessible :name,:user_ids, :project_ids
   validates :name, presence: true
 
   has_many :projects, dependent: :destroy

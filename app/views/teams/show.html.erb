@@ -7,9 +7,6 @@
   <% @team.users.each do |user| %>
     <li>
       <%= link_to user.username, user_path(user) %>
-      <div class = "edit_link">
-        <%= link_to "edit", edit_user_path(user) %>
-      </div>
     </li>
   <% end %>
 </ul>
@@ -19,12 +16,9 @@
   <% @team.projects.each do |project| %>
     <li>
       <%= link_to project.name, project_path(project) %>
-      <div class = "edit_link">
-        <%= link_to "edit", edit_project_path(project) %>
-      </div>
     </li>
   <% end %>
 </ul>
 
-<%= link_to "Edit team", edit_team_path(@team) %>
+<%= link_to "Edit Team", edit_team_path(@team) %>
 <%= back_to Team %>

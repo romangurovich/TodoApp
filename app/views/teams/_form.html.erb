@@ -1,11 +1,23 @@
 <%= form_for(team) do |f| %>
 
-  <%= f.label :name, "Team Name" %>
-  <%= f.text_field :name %>
+  <p>
+    <%= f.label :name, "Team Name" %>
+    <%= f.text_field :name %>
+  </p>
 
-  <%= check_box_field @team, User, :username %>
+  <p>
+    Team Members
+    <%= check_box_field team, User, :username %>
+  </p>
 
-  <%= f.submit team.persisted? ? "Edit that team, baby" : "Make this team" %>
+  <p>
+    Projects
+    <%= check_box_field team, Project, :name %>
+  </p>
+
+  <p>
+    <%= f.submit team.persisted? ? "Edit that team, baby" : "Make this team" %>
+  </p>
 
 <% end %>
 

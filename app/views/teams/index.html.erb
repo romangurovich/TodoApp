@@ -6,11 +6,8 @@
   <% @teams.each do |team| %>
     <li>
       <%= link_to team.name, team_path(team) %>
-      <div class = "edit_link">
-        <%= link_to "edit", edit_team_path(team) %>
-      </div>
     </li>
   <% end %>
 </ul>
 
-<%= link_to "Make a new Team", new_team_path %>
+<%= make_new Team %>
