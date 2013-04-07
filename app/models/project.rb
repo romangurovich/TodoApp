@@ -1,8 +1,11 @@
 class Project < ActiveRecord::Base
-  attr_accessible :name, :description, :team_id, :item_ids
-  validates :name, :team_id, presence: true
+  attr_accessible :name, :description, :team_ids, :item_ids
+  validates :name, :team_ids, presence: true
 
-  belongs_to :team
+  has_many :project_teams
+  has_many :teams, through: :project_teams
+  has_many :users, through: :teams
+
   has_many :items, dependent: :destroy
-  has_many :users, through: :team
+
 end

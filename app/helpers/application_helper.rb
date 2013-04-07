@@ -56,6 +56,31 @@ module ApplicationHelper
     end
   end
 
+  def flash_alerts
+    html = ""
+    if flash.alert
+      flash.alert.each do |message|
+        html << <<-HEREDOC
+        <div class='alert'>
+          <button type='button' class='close' data-dismiss='alert'>&times;</button>
+          #{message}
+        </div>
+        HEREDOC
+      end
+    end
+
+    if flash.notice
+      html << <<-HEREDOC
+      <div class='alert alert-success'>
+        <button type='button' class='close' data-dismiss='alert'>&times;</button>
+        #{flash.notice}
+      </div>
+      HEREDOC
+    end
+
+    html.html_safe
+  end
+
   # def go_back(object, options = {})
 #     controller_name = object.class.name.pluralize.underscore
 #     path = url_for controller: controller_name, action: 'index'

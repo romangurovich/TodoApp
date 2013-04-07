@@ -16,9 +16,10 @@ class ProjectsController < ApplicationController
     @project.assign_attributes(params[:project])
 
     if @project.save
+      flash.notice = "#{@project.name} updated"
       redirect_to project_path(@project)
     else
-      flash.now.notice << @project.errors.full_messages
+      flash.now.alert = @project.errors.full_messages
       render :edit
     end
   end
@@ -31,9 +32,10 @@ class ProjectsController < ApplicationController
     @project = Project.new(params[:project])
 
     if @project.save
+      flash.notice = "#{@project.name} created"
       redirect_to project_path(@project)
     else
-      flash.notice << @project.errors.full_messages
+      flash.now.alert = @project.errors.full_messages
       render :new
     end
   end

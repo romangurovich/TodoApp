@@ -16,9 +16,10 @@ class UsersController < ApplicationController
     @user.assign_attributes(params[:user])
 
     if @user.save
+      flash.notice = "#{@user.username} updated"
       redirect_to user_path(@user)
     else
-      flash.now.notice << @user.errors.full_messages
+      flash.now.alert = @user.errors.full_messages
       render :edit
     end
   end
@@ -31,16 +32,17 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
 
     if @user.save
+      flash.notice = "#{@user.username} created"
       redirect_to user_path(@user)
     else
-      flash.now.notice << @user.errors.full_messages
+      flash.now.alert = @user.errors.full_messages
       render :new
     end
   end
 
   def destroy
     User.find(params[:id]).destroy
-    flash.notice << "User deleted"
+    flash.notice = "User deleted"
     redirect_to users_path
   end
 

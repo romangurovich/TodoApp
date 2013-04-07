@@ -6,6 +6,16 @@
   </p>
 
   <p>
+    <%= f.label :description, "Description" %>
+    <%= f.text_area :description %>
+  </p>
+
+  <p>
+    <%= f.label :team_ids, "Team" %>
+    <%= f.collection_select :team_ids, Team.all, :id, :name %>
+  </p>
+
+  <p>
     Items
     <%= check_box_field project, Item, :title %>
   </p>

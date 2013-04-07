@@ -9,7 +9,11 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <%= render partial: "shared/flash" %>
-  <%= yield %>
+  <%= render partial: "shared/header"%>
+  <%#= render partial: "shared/flash" %>
+  <div class = "container">
+    <%= flash_alerts %>
+    <%= yield %>
+  </div>
 </body>
 </html>

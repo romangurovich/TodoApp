@@ -16,10 +16,14 @@
   </p>
 
   <p>
-    <%= f.submit team.persisted? ? "Edit that team, baby" : "Make this team" %>
+    <%= f.submit team.persisted? ? "Edit that team, baby" : "Make this team",
+    class: "btn-new-update" %>
   </p>
 
 <% end %>
 
-
-<%= undo team %>
+<ul class="nav nav-pills">
+  <li class="active">
+    <%= undo team %>
+  </li>
+</ul>

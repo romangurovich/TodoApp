@@ -5,8 +5,14 @@
 <h3>Description</h3>
 <p><%= @project.description %></p>
 
-<h3>Team working on <%= @project.name %></h3>
-<p><%= link_to @project.team.name, team_path(@project.team) %></p>
+<h3>Teams working on <%= @project.name %></h3>
+<ul>
+  <% @project.teams.each do |team| %>
+    <li>
+      <%= link_to team.name, team_path(team) %>
+    </li>
+  <% end %>
+</ul>
 
 <h3>People working on <%= @project.name %></h3>
 <ul>

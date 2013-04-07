@@ -16,9 +16,10 @@ class ItemsController < ApplicationController
     @item.assign_attributes(params[:item])
 
     if @item.save
+      flash.notice = "#{@item.title} updated"
       redirect_to item_path(@item)
     else
-      flash.notice << @item.errors.full_messages
+      flash.now.alert = @item.errors.full_messages
       render :edit
     end
   end
@@ -31,16 +32,17 @@ class ItemsController < ApplicationController
     @item = Item.new(params[:item])
 
     if @item.save
+      flash.notice = "#{@item.title} created"
       redirect_to item_path(@item)
     else
-      flash.notice << @item.errors.full_messages
+      flash.now.alert = @item.errors.full_messages
       render :new
     end
   end
 
   def destroy
     Item.find(params[:id]).destroy
-    flash.notice << "Item deleted"
+    flash.notice = "Item deleted"
     redirect_to items_path
   end
 

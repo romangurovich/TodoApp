@@ -6,6 +6,8 @@ gem 'rails', '3.2.13'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3'
+gem 'bootstrap-sass'
+gem "binding_of_caller"
 
 
 # Gems used only for assets and not required
@@ -22,6 +24,7 @@ end
 
 group :development do
   gem 'webrick'
+  gem 'better_errors'
 end
 
 gem 'jquery-rails'
