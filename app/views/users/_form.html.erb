@@ -6,16 +6,20 @@
   </p>
 
   <p>
-    Teams
+    <h4>Teams</h4>
     <%= check_box_field user, Team, :name %>
   </p>
-    Projects
-    <%= check_box_field user, Project, :name %>
-  </p>
+
+  <p>
     <%= f.submit user.persisted? ?
-            "Edit that user, darling" : "Make a new user" %>
+            "Edit that user, darling" : "Make a new user",
+            class: "btn-new-update" %>
   </p>
 
 <% end %>
 
-<% undo user %>
+<ul class="nav nav-pills">
+  <li class="active">
+    <%= undo user %>
+  </li>
+</ul>

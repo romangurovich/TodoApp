@@ -1,2 +1,19 @@
-<h1>Items#index</h1>
-<p>Find me in app/views/items/index.html.erb</p>
+<%= content_for(:title, "Items") %>
+
+<h1>Items</h1>
+
+<ul>
+  <% @items.each do |item| %>
+    <li>
+      <%= link_to item.title, item_path(item) %>
+    </li>
+  <% end %>
+</ul>
+
+<ul class="nav nav-pills">
+  <li class="active">
+    <%= make_new Item %>
+  </li>
+</ul>
+
+<%= back_to Project %>

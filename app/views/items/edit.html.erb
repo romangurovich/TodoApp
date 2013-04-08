@@ -1,2 +1,4 @@
-<h1>Items#edit</h1>
-<p>Find me in app/views/items/edit.html.erb</p>
+<%= content_for(:title, "Edit Item") %>
+
+<h1><%= "Edit Item '#{@item.title}'" %></h1>
+<%= render partial: 'form', locals: { item: @item } %>

@@ -1,0 +1,39 @@
+<%= form_for(item) do |f| %>
+
+  <p>
+    <%= f.label :title, "Item Title" %>
+    <%= f.text_field :title %>
+  </p>
+
+  <p>
+    <%= f.label :description, "Description" %>
+    <%= f.text_area :description %>
+  </p>
+
+  <p>
+    <%= f.label :project_id, "Project" %>
+    <%= f.collection_select :project_id, Project.all, :id, :name %>
+  </p>
+
+  <p><h3>Completed?</h3>
+
+    <label><%= f.radio_button :completed, 't', checked:
+          item.completed == true ? true : false %> Yes</label>
+
+    <label><%= f.radio_button :completed, 'f',checked:
+          item.completed == false ? true : false %> No</label>
+  <p>
+
+  <p>
+    <%= f.submit item.persisted? ?
+            "Edit that item, friend" : "Make this item",
+            class: "btn-new-update" %>
+  </p>
+
+<% end %>
+
+<ul class="nav nav-pills">
+  <li class="active">
+    <%= undo item %>
+  </li>
+</ul>

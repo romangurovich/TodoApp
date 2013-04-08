@@ -2,7 +2,7 @@
 
 <h1><%= @project.name %></h1>
 
-<h3>Description</h3>
+<h3>Project Description</h3>
 <p><%= @project.description %></p>
 
 <h3>Teams working on <%= @project.name %></h3>
@@ -23,5 +23,21 @@
   <% end %>
 </ul>
 
-<%= link_to "Edit ", edit_project_path(@project) %>
+<h3>Items</h3>
+<ul>
+  <% @project.items.each do |item| %>
+    <li>
+      <%= link_to item.title, item_path(item) %>
+      <%#= item_complete_form(item) %>
+    </li>
+  <% end %>
+</ul>
+
+<ul class="nav nav-pills">
+  <li class="active">
+    <%= link_to "Edit Project", edit_project_path(@project) %>
+    <%= link_to "DELETE", project_path(@project), method: :delete %>
+  </li>
+</ul>
+
 <%= back_to Team %>

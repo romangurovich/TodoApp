@@ -22,10 +22,14 @@
 
   <p>
     <%= f.submit project.persisted? ?
-            "Edit that project, friend" : "Make this project" %>
+            "Edit that project, friend" : "Make this project",
+            class: "btn-new-update" %>
   </p>
 
 <% end %>
 
-
-<%= undo project %>
+<ul class="nav nav-pills">
+  <li class="active">
+    <%= undo project %>
+  </li>
+</ul>

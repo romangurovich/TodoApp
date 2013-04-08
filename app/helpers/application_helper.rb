@@ -15,7 +15,7 @@ module ApplicationHelper
                         thing.id,
                         parent.send(child_ids).include?(thing.id),
                       )
-      html += thing.send(display_method)
+      html += " " + thing.send(display_method)
       html += "</label>"
     end
 

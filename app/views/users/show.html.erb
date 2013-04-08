@@ -20,5 +20,10 @@
   <% end %>
 </ul>
 
-<%= link_to "Edit ", edit_user_path(@user) %>
+<ul class="nav nav-pills">
+  <li class="active">
+    <%= link_to "Edit User", edit_user_path(@user) %>
+  </li>
+</ul>
+
 <%= back_to User %>
